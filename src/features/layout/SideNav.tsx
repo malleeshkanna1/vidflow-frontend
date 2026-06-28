@@ -56,13 +56,6 @@ export function SideNav() {
         </Link>
       </div>
 
-      {/* Upload Button */}
-      <div className="px-4">
-        <Button className="w-full gap-2">
-          <Upload className="h-4 w-4" />
-          Upload Asset
-        </Button>
-      </div>
 
       {/* Navigation */}
       <nav className="mt-6 flex-1 space-y-1 px-3">
@@ -111,11 +104,11 @@ export function SideNav() {
       <div className="border-t p-4">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
-            JD
+            MK
           </div>
 
           <div>
-            <p className="text-sm font-medium">John Doe</p>
+            <p className="text-sm font-medium">Malleeshkanna</p>
             <p className="text-xs text-muted-foreground">
               Administrator
             </p>

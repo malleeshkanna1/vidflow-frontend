@@ -27,6 +27,10 @@ class AxiosService {
     );
   }
 
+  public apiUrl(){
+    return this.api_url
+  }
+
   public async get<T>(
     url: string,
     config?: AxiosRequestConfig
