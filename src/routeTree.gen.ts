@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LibraryIndexRouteImport } from './routes/library/index'
 import { Route as FootagesIndexRouteImport } from './routes/footages/index'
+import { Route as FilesIndexRouteImport } from './routes/files/index'
 import { Route as CustomersIndexRouteImport } from './routes/customers/index'
 import { Route as FootagesEditFootageRouteImport } from './routes/footages/$EditFootage'
 import { Route as CustomersNewRouteImport } from './routes/customers/new'
@@ -30,6 +31,11 @@ const LibraryIndexRoute = LibraryIndexRouteImport.update({
 const FootagesIndexRoute = FootagesIndexRouteImport.update({
   id: '/footages/',
   path: '/footages/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilesIndexRoute = FilesIndexRouteImport.update({
+  id: '/files/',
+  path: '/files/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomersIndexRoute = CustomersIndexRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/customers/new': typeof CustomersNewRoute
   '/footages/$EditFootage': typeof FootagesEditFootageRoute
   '/customers/': typeof CustomersIndexRoute
+  '/files/': typeof FilesIndexRoute
   '/footages/': typeof FootagesIndexRoute
   '/library/': typeof LibraryIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/customers/new': typeof CustomersNewRoute
   '/footages/$EditFootage': typeof FootagesEditFootageRoute
   '/customers': typeof CustomersIndexRoute
+  '/files': typeof FilesIndexRoute
   '/footages': typeof FootagesIndexRoute
   '/library': typeof LibraryIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/customers/new': typeof CustomersNewRoute
   '/footages/$EditFootage': typeof FootagesEditFootageRoute
   '/customers/': typeof CustomersIndexRoute
+  '/files/': typeof FilesIndexRoute
   '/footages/': typeof FootagesIndexRoute
   '/library/': typeof LibraryIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/customers/new'
     | '/footages/$EditFootage'
     | '/customers/'
+    | '/files/'
     | '/footages/'
     | '/library/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/customers/new'
     | '/footages/$EditFootage'
     | '/customers'
+    | '/files'
     | '/footages'
     | '/library'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/customers/new'
     | '/footages/$EditFootage'
     | '/customers/'
+    | '/files/'
     | '/footages/'
     | '/library/'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   CustomersNewRoute: typeof CustomersNewRoute
   FootagesEditFootageRoute: typeof FootagesEditFootageRoute
   CustomersIndexRoute: typeof CustomersIndexRoute
+  FilesIndexRoute: typeof FilesIndexRoute
   FootagesIndexRoute: typeof FootagesIndexRoute
   LibraryIndexRoute: typeof LibraryIndexRoute
 }
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/footages'
       fullPath: '/footages/'
       preLoaderRoute: typeof FootagesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/files/': {
+      id: '/files/'
+      path: '/files'
+      fullPath: '/files/'
+      preLoaderRoute: typeof FilesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/customers/': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomersNewRoute: CustomersNewRoute,
   FootagesEditFootageRoute: FootagesEditFootageRoute,
   CustomersIndexRoute: CustomersIndexRoute,
+  FilesIndexRoute: FilesIndexRoute,
   FootagesIndexRoute: FootagesIndexRoute,
   LibraryIndexRoute: LibraryIndexRoute,
 }
